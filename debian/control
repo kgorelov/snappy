@@ -1,0 +1,63 @@
+Source: snappy
+Priority: extra
+Maintainer: Kirill Gorelov <kgorelov@yandex-team.ru>
+Build-Depends: debhelper (>= 7), autotools-dev
+Standards-Version: 3.9.2
+Section: libs
+Homepage: http://code.google.com/p/snappy/
+
+Package: libsnappy-dev
+Section: libdevel
+Architecture: any
+Depends: libsnappy1 (= ${binary:Version}), ${misc:Depends}
+Description: fast compression/decompression library (development files)
+ Snappy is a compression/decompression library. It does not aim for
+ maximum compression, or compatibility with any other compression  
+ library; instead, it aims for very high speeds and reasonable   
+ compression.
+ .
+ For instance, compared to the fastest mode of zlib, Snappy
+ is an order of magnitude faster for most inputs, but the resulting     
+ compressed files are anywhere from 20% to 100% bigger. On a single core
+ of a Core i7 processor in 64-bit mode, Snappy compresses at about 250  
+ MB/sec or more and decompresses at about 500 MB/sec or more.
+ .
+ This package contains the development files required to build programs
+ against Snappy.
+
+Package: libsnappy1
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: fast compression/decompression library
+ Snappy is a compression/decompression library. It does not aim for
+ maximum compression, or compatibility with any other compression  
+ library; instead, it aims for very high speeds and reasonable   
+ compression.
+ .
+ For instance, compared to the fastest mode of zlib, Snappy
+ is an order of magnitude faster for most inputs, but the resulting     
+ compressed files are anywhere from 20% to 100% bigger. On a single core
+ of a Core i7 processor in 64-bit mode, Snappy compresses at about 250  
+ MB/sec or more and decompresses at about 500 MB/sec or more.
+
+Package: libsnappystream
+Section: libs
+Architecture: any
+Depends: libsnappy1 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: iostream interface to libsnappy
+
+Package: libsnappystream-dev
+Section: libdevel
+Architecture: any
+Depends: libsnappystream (= ${binary:Version}), ${misc:Depends}
+Description: libsnappystream development files
+
+Package: snap
+Architecture: any
+Depends: libsnappy1 (= ${binary:Version}), libsnappystream (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: fast compression/decompression utility
+ Snap is a command line compression/decompression utility. It does not aim for
+ maximum compression, or compatibility with any other compression  
+ format; instead, it aims for very high speeds and reasonable   
+ compression.
