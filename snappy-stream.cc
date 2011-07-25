@@ -112,7 +112,7 @@ isnapstreambuf::int_type isnapstreambuf::underflow()
 
     this->setg(&out_buffer_[0], &out_buffer_[0],
                &out_buffer_[0] + out_buffer_.size());
-    return out_buffer_[0];
+    return traits_type::to_int_type(*(this->gptr()));
 }
 
 isnapverifystreambuf::isnapverifystreambuf(std::streambuf *src)
@@ -159,7 +159,7 @@ isnapverifystreambuf::int_type isnapverifystreambuf::underflow()
 
     this->setg(&out_buffer_[0], &out_buffer_[0],
                &out_buffer_[0] + out_buffer_.size());
-    return out_buffer_[0];
+    return traits_type::to_int_type(*(this->gptr()));
 }
 
 osnapstream::osnapstream(std::ostream *out, unsigned chunksize)

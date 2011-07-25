@@ -236,6 +236,8 @@ int main(int argc, char* argv[])
         usage();
 
     int rc = 0;
+    if (!options.filenames.size())
+        options.filenames.push_back("");
     std::vector<std::string>::const_iterator it = options.filenames.begin();
     for (; it != options.filenames.end(); ++it)
         rc |= action(*it, &options);
