@@ -20,6 +20,7 @@ endif
 ifneq "$(wildcard /usr/share/misc/config.guess)" ""
 	cp -f /usr/share/misc/config.guess config.guess
 endif
+	./autogen.sh
 	./configure $(CROSS) --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info CXXFLAGS="-DNDEBUG $(CXXFLAGS)" LDFLAGS="-Wl,-z,defs"
 	$(MAKE)
 	$(MAKE) check
