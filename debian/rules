@@ -13,7 +13,7 @@ endif
 
 build: 
 	dh_testdir
-	dh_prep
+	#dh_prep
 ifneq "$(wildcard /usr/share/misc/config.sub)" ""
 	cp -f /usr/share/misc/config.sub config.sub
 endif
@@ -33,14 +33,19 @@ clean:
 	rm -f config.sub config.guess
 	dh_clean 
 
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
+	dh_install --sourcedir=$(CURDIR)/debian/tmp
+
 binary: binary-arch
 binary-indep:
 binary-arch:
 	dh_testdir
 	dh_testroot
-	dh_installdirs
-	$(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
-	dh_install
 	dh_installchangelogs ChangeLog
 	dh_installdocs
 	dh_link
