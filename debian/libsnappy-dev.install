@@ -1,3 +1,5 @@
-usr/include/*
-usr/lib/lib*.a
-usr/lib/lib*.so
+usr/include/snappy-c.h
+usr/include/snappy.h
+usr/include/snappy-sinksource.h
+usr/include/snappy-stubs-public.h
+usr/lib/libsnappy.a

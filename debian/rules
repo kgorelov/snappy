@@ -38,12 +38,12 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/tmp
+	$(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
 	dh_install --sourcedir=$(CURDIR)/debian/tmp
 
 binary: binary-arch
-binary-indep:
-binary-arch:
+binary-indep: install
+binary-arch: install
 	dh_testdir
 	dh_testroot
 	dh_installchangelogs ChangeLog
@@ -59,4 +59,4 @@ binary-arch:
 	dh_md5sums
 	dh_builddeb
 
-.PHONY: build clean binary binary-indep binary-arch
+.PHONY: install build clean binary binary-indep binary-arch
