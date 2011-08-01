@@ -7,7 +7,6 @@
 #include <unistd.h>
 #include <getopt.h>
 #include <stdexcept>
-#include <endian.h>
 
 #include "snappy.h"
 #include "snappy-stream.h"

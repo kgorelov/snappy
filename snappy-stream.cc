@@ -2,7 +2,8 @@
 #include <cstring>
 #include <cstdio>
 #include <stdint.h>
-#include <endian.h>
+
+#include "snappy-internal.h"
 #include "snappy-stream.h"
 #include "snappy.h"
 
@@ -66,7 +67,7 @@ int osnapstreambuf::sync()
     uint32_t compressed_len = Compress(in_buffer_,
                                                uncompressed_len,
                                                &out_buffer_);
-    uint32_t len_le = htole32(compressed_len);
+    uint32_t len_le = LittleEndian::FromHost32(compressed_len);
     if (dest_->sputn(reinterpret_cast<const char*>(&len_le), 4)  != 4)
         return -1;
     if (dest_->sputn(&out_buffer_[0], compressed_len) != compressed_len)
@@ -91,7 +92,7 @@ isnapstreambuf::int_type isnapstreambuf::underflow()
     if (src_->sgetn(reinterpret_cast<char*>(&len_le), 4) != 4)
         return EOF;
 
-    uint32_t len = le32toh(len_le);
+    uint32_t len = LittleEndian::ToHost32(len_le);
     if (!len)
         return EOF;
 
@@ -134,7 +135,7 @@ isnapverifystreambuf::int_type isnapverifystreambuf::underflow()
     if (nr != 4)
         throw std::runtime_error("malformed snapstream");
 
-    uint32_t len = le32toh(len_le);
+    uint32_t len = LittleEndian::ToHost32(len_le);
     compressed_size_ += 4;
     if (!len)
         return EOF;
