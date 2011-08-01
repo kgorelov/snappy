@@ -1,3 +1,9 @@
+snappy (1.0.3-3) unstable; urgency=low
+
+  * Little cleanup
+
+ -- Kirill Gorelov <kgorelov@yandex-team.ru>  Mon, 01 Aug 2011 18:10:00 +0400
+
 snappy (1.0.3-2) unstable; urgency=low
 
   * Bugfixes.
