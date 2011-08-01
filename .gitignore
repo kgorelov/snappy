@@ -1,0 +1,7 @@
+config.guess
+config.sub
+ltmain.sh
+Makefile.in
+config.h.in
+configure
+aclocal.m4
