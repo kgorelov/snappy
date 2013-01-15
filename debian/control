@@ -44,7 +44,7 @@ Description: fast compression/decompression library
 Package: libsnappystream
 Section: libs
 Architecture: any
-Depends: libsnappy1 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: libsnappy1 (>= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Description: iostream interface to libsnappy
 
 Package: libsnappystream-dev
@@ -55,7 +55,7 @@ Description: libsnappystream development files
 
 Package: snap
 Architecture: any
-Depends: libsnappy1 (= ${binary:Version}), libsnappystream (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: libsnappy1 (>= ${binary:Version}), libsnappystream (>= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Description: fast compression/decompression utility
  Snap is a command line compression/decompression utility. It does not aim for
  maximum compression, or compatibility with any other compression  
