@@ -81,7 +81,7 @@ isnapstreambuf::isnapstreambuf(std::streambuf *src)
 {
     char source_magic[4];
     std::streamsize nread = src_->sgetn(source_magic, 4);
-    if (memcmp(magic, source_magic, 4))
+    if (nread < 4 || memcmp(magic, source_magic, 4))
         throw std::runtime_error("isnapstreambuf - bad magic number");
     this->setg(0,0,0);
 }
